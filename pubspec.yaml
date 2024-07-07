@@ -45,7 +45,9 @@ dependencies:
   get_it: ^7.6.7
   # used for code genration for json by annotation
   json_serializable: ^6.7.1
-  json_annotation: ^4.8.1
+  json_annotation: ^4.9.0
+  # A build system for Dart code generation and modular compilation.
+  build_runner: ^2.4.9
 
   #Network layer
   dio: ^5.4.1
@@ -54,7 +56,12 @@ dependencies:
   retrofit_generator: ^8.1.0
   shared_preferences: ^2.2.2
   intl: ^0.19.0
+  # for splash screen
   flutter_native_splash: ^2.3.13
+  # for svg image
+  flutter_svg: ^2.0.10+1
+  # for App Responsive
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:
@@ -78,8 +85,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
+    - assets/svgs/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
