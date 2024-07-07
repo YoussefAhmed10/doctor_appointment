@@ -1,6 +1,14 @@
 import 'package:doctor_appointement_project/core/helpers/spacing.dart';
 import 'package:doctor_appointement_project/core/theming/style.dart';
 import 'package:doctor_appointement_project/core/widgets/app_text_button.dart';
+import 'package:doctor_appointement_project/features/login/data/models/login_request_body.dart';
+import 'package:doctor_appointement_project/features/login/logic/login_cubit.dart';
+import 'package:doctor_appointement_project/features/login/ui/widget/already_have_account_text.dart';
+import 'package:doctor_appointement_project/features/login/ui/widget/email_and_password.dart';
+import 'package:doctor_appointement_project/features/login/ui/widget/login_bloc_listner.dart';
+import 'package:doctor_appointement_project/features/login/ui/widget/terms_and_conditions_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:doctor_appointement_project/core/widgets/app_text_from_field.dart';
 import 'package:doctor_appointement_project/features/login/ui/widget/already_have_account_text.dart';
 import 'package:doctor_appointement_project/features/login/ui/widget/terms_and_conditions_text.dart';
@@ -40,52 +48,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyles.font14GrayRegular,
                 ),
                 verticalSpace(36),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      AppTextFormField(
-                        hintText: 'Email',
-                        controller: emailController,
+                Column(
+                  children: [
+                    const EmailAndPassword(),
+                    verticalSpace(24),
+                    Align(
+                      alignment: AlignmentDirectional.centerEnd,
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyles.font13BlueRegular,
                       ),
-                      verticalSpace(18),
-                      AppTextFormField(
-                        hintText: 'Password',
-                        controller: passwordController,
-                        isObscureText: isObscureText,
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              isObscureText = !isObscureText;
-                            });
-                          },
-                          child: Icon(
-                            !isObscureText
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                        ),
-                      ),
-                      verticalSpace(24),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Text(
-                          'Forgot Password?',
-                          style: TextStyles.font13BlueRegular,
-                        ),
-                      ),
-                      verticalSpace(40),
-                      AppTextButton(
-                        buttonText: 'Login',
-                        textStyle: TextStyles.font16WhiteSemiBold,
-                        onPressed: () {},
-                      ),
-                      verticalSpace(16),
-                      const TermsAndConditionsText(),
-                      verticalSpace(60),
-                      const AlreadyHaveAccountText(),
-                    ],
-                  ),
+                    ),
+                    verticalSpace(40),
+                    AppTextButton(
+                      buttonText: 'Login',
+                      textStyle: TextStyles.font16WhiteSemiBold,
+                      onPressed: () {
+                        validateThenLogin(context);
+                      },
+                    ),
+                    verticalSpace(16),
+                    const TermsAndConditionsText(),
+                    verticalSpace(60),
+                    const AlreadyHaveAccountText(),
+                    const LoginBlocListner(),
+                  ],
                 ),
               ],
             ),
@@ -93,5 +80,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void validateThenLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginState(
+            loginRequestBody: LoginRequestBody(
+              email: context.read<LoginCubit>().emailController.text,
+              password: context.read<LoginCubit>().passwordController.text,
+            ),
+          );
+    }
   }
 }
