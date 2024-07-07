@@ -1,9 +1,7 @@
 import 'package:doctor_appointement_project/core/theming/colors.dart';
 import 'package:doctor_appointement_project/core/theming/style.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 class AppTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
@@ -16,6 +14,7 @@ class AppTextFormField extends StatelessWidget {
   final Color? backgroundColor;
   final TextEditingController? controller;
   final Function(String?) validator;
+
   const AppTextFormField({
     super.key,
     this.contentPadding,
@@ -29,6 +28,7 @@ class AppTextFormField extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     required this.validator,
+
   });
 
   @override
@@ -80,6 +80,7 @@ class AppTextFormField extends StatelessWidget {
       validator: (value) {
         return validator(value);
       },
+
     );
   }
 }

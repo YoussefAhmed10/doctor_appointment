@@ -9,11 +9,24 @@ import 'package:doctor_appointement_project/features/login/ui/widget/login_bloc_
 import 'package:doctor_appointement_project/features/login/ui/widget/terms_and_conditions_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:doctor_appointement_project/core/widgets/app_text_from_field.dart';
+import 'package:doctor_appointement_project/features/login/ui/widget/already_have_account_text.dart';
+import 'package:doctor_appointement_project/features/login/ui/widget/terms_and_conditions_text.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
