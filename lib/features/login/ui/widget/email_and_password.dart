@@ -58,7 +58,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
         children: [
           AppTextFormField(
             hintText: 'Email',
-            controller: emailController,
+            controller: context.read<LoginCubit>().emailController,
             validator: (val) {
               if (val!.isEmpty || !AppRegex.isEmailValid(val)) {
                 return 'Please enter a valid email';
@@ -68,7 +68,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           verticalSpace(18),
           AppTextFormField(
             hintText: 'Password',
-            controller: passwordController,
+            controller: context.read<LoginCubit>().passwordController,
             isObscureText: isObscureText,
             suffixIcon: GestureDetector(
               onTap: () {
