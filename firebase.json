@@ -1,0 +1,22 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "doctor-app-distribution-92f11",
+                    "appId": "1:1077444234645:android:3ff53b6d1ae3c2caadba9c",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "doctor-app-distribution-92f11",
+                    "configurations": {
+                        "android": "1:1077444234645:android:3ff53b6d1ae3c2caadba9c",
+                        "ios": "1:1077444234645:ios:1c01671fb4c2a4b0adba9c"
+                    }
+                }
+            }
+        }
+    }
+}
