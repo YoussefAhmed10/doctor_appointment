@@ -30,13 +30,13 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Text(
                   'Welcome Back',
-                  style: TextStyles.font24BlueBold,
+                  style: AppTextStyles.font24BlueBold,
                 ),
                 verticalSpace(8),
                 Text(
                   'We\'re excited to have you back, can\'t wait to see what you'
                   've been up to since you last logged in.',
-                  style: TextStyles.font14GrayRegular,
+                  style: AppTextStyles.font14GrayRegular,
                 ),
                 verticalSpace(36),
                 Column(
@@ -47,13 +47,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       alignment: AlignmentDirectional.centerEnd,
                       child: Text(
                         'Forgot Password?',
-                        style: TextStyles.font13BlueRegular,
+                        style: AppTextStyles.font13BlueRegular,
                       ),
                     ),
                     verticalSpace(40),
                     AppTextButton(
                       buttonText: 'Login',
-                      textStyle: TextStyles.font16WhiteSemiBold,
+                      textStyle: AppTextStyles.font16WhiteSemiBold,
                       onPressed: () {
                         validateThenLogin(context);
                       },

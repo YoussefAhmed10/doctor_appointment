@@ -15,7 +15,7 @@ class GetStartedButton extends StatelessWidget {
         context.pushNamed(Routes.loginScreen);
       },
       style: TextButton.styleFrom(
-        backgroundColor: ColorsManager.mainBlue,
+        backgroundColor: AppColors.mainBlue,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         minimumSize: Size(double.infinity, 52.h),
         shape: RoundedRectangleBorder(
@@ -24,7 +24,7 @@ class GetStartedButton extends StatelessWidget {
       ),
       child: Text(
         'Get Started',
-        style: TextStyles.font16WhiteMedium,
+        style: AppTextStyles.font16WhiteMedium,
       ),
     );
   }
