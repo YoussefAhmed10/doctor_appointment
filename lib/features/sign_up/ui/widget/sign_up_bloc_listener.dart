@@ -25,7 +25,7 @@ class SignupBlocListener extends StatelessWidget {
               context: context,
               builder: (context) => const Center(
                 child: CircularProgressIndicator(
-                  color: ColorsManager.mainBlue,
+                  color: AppColors.mainBlue,
                 ),
               ),
             );
@@ -86,7 +86,7 @@ class SignupBlocListener extends StatelessWidget {
         ),
         content: Text(
           error,
-          style: TextStyles.font15DarkBlueMedium,
+          style: AppTextStyles.font15DarkBlueMedium,
         ),
         actions: [
           TextButton(
@@ -95,7 +95,7 @@ class SignupBlocListener extends StatelessWidget {
             },
             child: Text(
               'Got it',
-              style: TextStyles.font14BlueSemiBold,
+              style: AppTextStyles.font14BlueSemiBold,
             ),
           ),
         ],

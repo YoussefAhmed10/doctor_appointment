@@ -22,7 +22,7 @@ class LoginBlocListner extends StatelessWidget {
               context: context,
               builder: (context) => const Center(
                 child: CircularProgressIndicator(
-                  color: ColorsManager.mainBlue,
+                  color: AppColors.mainBlue,
                 ),
               ),
             );
@@ -52,7 +52,7 @@ class LoginBlocListner extends StatelessWidget {
         ),
         content: Text(
           errorMessage,
-          style: TextStyles.font15DarkBlueMedium,
+          style: AppTextStyles.font15DarkBlueMedium,
         ),
         actions: [
           TextButton(
@@ -61,7 +61,7 @@ class LoginBlocListner extends StatelessWidget {
             },
             child: Text(
               'Got it',
-              style: TextStyles.font14BlueSemiBold,
+              style: AppTextStyles.font14BlueSemiBold,
             ),
           ),
         ],

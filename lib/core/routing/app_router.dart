@@ -1,6 +1,6 @@
 import 'package:doctor_appointement_project/core/di/dependancy_injection.dart';
 import 'package:doctor_appointement_project/core/routing/routes.dart';
-import 'package:doctor_appointement_project/features/home/home_screen.dart';
+import 'package:doctor_appointement_project/features/home/ui/home_screen.dart';
 import 'package:doctor_appointement_project/features/login/logic/login_cubit.dart';
 import 'package:doctor_appointement_project/features/login/ui/login_screen.dart';
 import 'package:doctor_appointement_project/features/onboarding/onboarding_screen.dart';
