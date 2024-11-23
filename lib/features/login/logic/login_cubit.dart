@@ -1,3 +1,6 @@
+import 'package:doctor_appointement_project/core/helpers/constants.dart';
+import 'package:doctor_appointement_project/core/helpers/shared_pref_helper.dart';
+import 'package:doctor_appointement_project/core/networking/dio_factory.dart';
 import 'package:doctor_appointement_project/features/login/data/models/login_request_body.dart';
 import 'package:doctor_appointement_project/features/login/data/repos/login_repo.dart';
 import 'package:doctor_appointement_project/features/login/logic/login_state.dart';
@@ -20,7 +23,8 @@ class LoginCubit extends Cubit<LoginState> {
       ),
     );
     response.when(
-      success: (loginResponse) {
+      success: (loginResponse) async {
+        await saveUserToken(loginResponse.userData?.token ?? '');
         emit(LoginState.success(loginResponse));
       },
       failure: (error) {
@@ -28,4 +32,9 @@ class LoginCubit extends Cubit<LoginState> {
       },
     );
   }
+}
+
+Future<void> saveUserToken(String token) async {
+  await SharedPrefHelper.setData(SharedPrefKeys.userToken, token);
+  DioFactory.setTokenIntoHeaderAfterLogin(token);
 }
