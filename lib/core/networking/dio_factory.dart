@@ -29,7 +29,7 @@ class DioFactory {
     dio?.options.headers = {
       'Accept': 'application/json',
       'Authorization':
-          'Bearer ${await SharedPrefHelper.getString(SharedPrefKeys.userToken)}',
+          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
       // 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZjYXJlLmludGVncmF0aW9uMjUuY29tL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzMyMjk1Nzc2LCJleHAiOjE3MzIzODIxNzYsIm5iZiI6MTczMjI5NTc3NiwianRpIjoiZFl3amlSam9NZVhwb0IzVyIsInN1YiI6IjI3ODAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0._P7E3Jc4-ZJgAhs9pphvxkE2cCnHICA5JDzm4xhtk9Q',
     };
   }
