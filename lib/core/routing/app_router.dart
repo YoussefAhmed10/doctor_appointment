@@ -1,5 +1,6 @@
 import 'package:doctor_appointement_project/core/di/dependancy_injection.dart';
 import 'package:doctor_appointement_project/core/routing/routes.dart';
+import 'package:doctor_appointement_project/features/home/logic/cubit/home_cubit.dart';
 import 'package:doctor_appointement_project/features/home/ui/home_screen.dart';
 import 'package:doctor_appointement_project/features/login/logic/login_cubit.dart';
 import 'package:doctor_appointement_project/features/login/ui/login_screen.dart';
@@ -10,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
-  Route generateRoute(RouteSettings settings) {
+  Route? generateRoute(RouteSettings settings) {
     // this argument will be used to pass in any screen like this (argument as ClassName)
     final argument = settings.arguments;
     switch (settings.name) {
@@ -34,18 +35,13 @@ class AppRouter {
         );
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        );
-      default:
-        return MaterialPageRoute(
-          builder: (context) => Scaffold(
-            body: Center(
-              child: Text(
-                "No route defined for ${settings.name}",
-              ),
-            ),
+          builder: (context) => BlocProvider(
+            create: (context) => HomeCubit(getit())..getSpecializationData(),
+            child: const HomeScreen(),
           ),
         );
+      default:
+        return null;
     }
   }
 }

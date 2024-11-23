@@ -1,12 +1,14 @@
-import 'package:doctor_appointement_project/core/helpers/spacing.dart';
-import 'package:doctor_appointement_project/core/theming/colors.dart';
-import 'package:doctor_appointement_project/core/theming/style.dart';
+import 'package:doctor_appointement_project/features/home/data/models/specialization_response_model.dart';
+import 'package:doctor_appointement_project/features/home/ui/widget/doctors_specilaity_listview_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class DoctorsSpecialityListView extends StatelessWidget {
-  const DoctorsSpecialityListView({super.key});
+  const DoctorsSpecialityListView({
+    super.key,
+    required this.specializationList,
+  });
+  final List<SpecializationsData?>? specializationList;
 
   @override
   Widget build(BuildContext context) {
@@ -14,30 +16,11 @@ class DoctorsSpecialityListView extends StatelessWidget {
       height: 100.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: specializationList!.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsetsDirectional.only(
-              start: index == 0 ? 0 : 24.w,
-            ),
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 28,
-                  backgroundColor: AppColors.lightBlue,
-                  child: SvgPicture.asset(
-                    'assets/svgs/general_speciality.svg',
-                    width: 40.w,
-                    height: 40.h,
-                  ),
-                ),
-                verticalSpace(8),
-                Text(
-                  'General',
-                  style: AppTextStyles.font12DarkBlueRegular,
-                ),
-              ],
-            ),
+          return DoctorsSpecilaityListViewItem(
+            index: index,
+            specializationsData: specializationList![index]!,
           );
         },
       ),
