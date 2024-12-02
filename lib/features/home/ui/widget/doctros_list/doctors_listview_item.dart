@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:doctor_appointement_project/core/helpers/spacing.dart';
+import 'package:doctor_appointement_project/core/theming/colors.dart';
 import 'package:doctor_appointement_project/core/theming/style.dart';
 import 'package:doctor_appointement_project/features/home/data/models/specialization_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 class DoctorsListViewItem extends StatelessWidget {
   const DoctorsListViewItem({
@@ -20,21 +22,21 @@ class DoctorsListViewItem extends StatelessWidget {
           CachedNetworkImage(
             imageUrl:
                 "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
-            // progressIndicatorBuilder: (context, url, downloadProgress) {
-            //   return Shimmer.fromColors(
-            //     baseColor: ColorsManager.lightGray,
-            //     highlightColor: Colors.white,
-            //     child: Container(
-            //       width: 110.w,
-            //       height: 120.h,
-            //       decoration: BoxDecoration(
-            //         shape: BoxShape.rectangle,
-            //         borderRadius: BorderRadius.circular(12.0),
-            //         color: Colors.white,
-            //       ),
-            //     ),
-            //   );
-            // },
+            progressIndicatorBuilder: (context, url, downloadProgress) {
+              return Shimmer.fromColors(
+                baseColor: AppColors.lightGray,
+                highlightColor: Colors.white,
+                child: Container(
+                  width: 110.w,
+                  height: 120.h,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            },
             imageBuilder: (context, imageProvider) => Container(
               width: 110.w,
               height: 120.h,
