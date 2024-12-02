@@ -9,13 +9,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepository _repo;
-  LoginCubit(this._repo) : super(const LoginState.initial());
+  LoginCubit(this._repo) : super(const LoginState.loginInitial());
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   void emitLoginState() async {
-    emit(const LoginState.loading());
+    emit(const LoginState.loginLoading());
     final response = await _repo.login(
       loginRequestBody: LoginRequestBody(
         email: emailController.text,
@@ -25,10 +25,10 @@ class LoginCubit extends Cubit<LoginState> {
     response.when(
       success: (loginResponse) async {
         await saveUserToken(loginResponse.userData?.token ?? '');
-        emit(LoginState.success(loginResponse));
+        emit(LoginState.loginSuccess(loginResponse));
       },
       failure: (error) {
-        emit(LoginState.error(error.apiErrorModel.message ?? ''));
+        emit(LoginState.loginError(error));
       },
     );
   }

@@ -1,7 +1,6 @@
 import 'package:doctor_appointement_project/core/helpers/spacing.dart';
 import 'package:doctor_appointement_project/features/home/logic/cubit/home_cubit.dart';
 import 'package:doctor_appointement_project/features/home/logic/cubit/home_state.dart';
-import 'package:doctor_appointement_project/features/home/ui/widget/doctros_list/doctors_list_view.dart';
 import 'package:doctor_appointement_project/features/home/ui/widget/doctros_list/doctors_shimmer_loading.dart';
 import 'package:doctor_appointement_project/features/home/ui/widget/specializations_list/speciality_list_view.dart';
 import 'package:doctor_appointement_project/features/home/ui/widget/specializations_list/speciality_shimmer_loading.dart';

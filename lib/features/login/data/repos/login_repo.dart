@@ -15,7 +15,7 @@ class LoginRepository {
       return ApiResult.success(response);
     } catch (e) {
       return ApiResult.failure(
-        ErrorHandler.handle(e.toString()),
+        ApiErrorHandler.handle(e.toString()),
       );
     }
   }

@@ -34,8 +34,8 @@ class SignupBlocListener extends StatelessWidget {
             context.goBack();
             showSuccessDialog(context);
           },
-          signupError: (error) {
-            setupErrorState(context, error);
+          signupError: (apiErrorModel) {
+            setupErrorState(context, apiErrorModel.getAllErrorMessage());
           },
         );
       },

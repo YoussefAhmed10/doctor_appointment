@@ -41,7 +41,7 @@ class HomeCubit extends Cubit<HomeState> {
     } else {
       emit(
         HomeState.doctorsError(
-          ErrorHandler.handle('No doctors found'),
+          ApiErrorHandler.handle('No doctors found'),
         ),
       );
     }

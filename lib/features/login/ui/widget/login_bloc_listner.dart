@@ -14,10 +14,12 @@ class LoginBlocListner extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listenWhen: (previous, current) =>
-          current is Loading || current is Success || current is Error,
+          current is LoginLoading ||
+          current is LoginSuccess ||
+          current is LoginError,
       listener: (context, state) {
         state.whenOrNull(
-          loading: () {
+          loginLoading: () {
             showDialog(
               context: context,
               builder: (context) => const Center(
@@ -27,12 +29,12 @@ class LoginBlocListner extends StatelessWidget {
               ),
             );
           },
-          success: (loginResponse) {
+          loginSuccess: (loginResponse) {
             context.goBack();
             context.pushNamed(Routes.homeScreen);
           },
-          error: (errorMessage) {
-            setupErrorState(context, errorMessage);
+          loginError: (apiErrorModel) {
+            setupErrorState(context, apiErrorModel.getAllErrorMessage());
           },
         );
       },
